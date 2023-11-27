@@ -1,0 +1,138 @@
+@use "./module";
+
+.header {
+  height: 70px;
+  background-color: #fff;
+
+  @include module.mq(pc) {
+    height: 90px;
+  }
+
+  &__inner {
+    width: 100%;
+    height: 100%;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 22px 15px;
+
+    @include module.mq(pc) {
+      // padding分が引かれてしまうので、実際のコンテンツは
+      // 1140 - 30 = 1110pxになってしまっているので
+      // calcで計算する
+      max-width: calc(module.$width-inner + 30px * 2);
+      padding-left: 30px;
+      padding-right: 30px;
+      margin-right: auto;
+      margin-left: auto;
+    }
+
+  }
+
+  &__logo {
+
+    a {
+      img {
+        width: 100px;
+        display: block;
+
+        @include module.mq(pc) {
+          width: 135px;
+        }
+      }
+    }
+  }
+
+  &__nav {
+    display: none;
+
+    @include module.mq(pc) {
+      display: flex;
+      align-items: center;
+      gap: 40px;
+    }
+
+  }
+
+  &__link {
+    font-weight: 700;
+    letter-spacing: 0.48px;
+
+    &:hover {
+      color: module.$key-color1;
+    }
+  }
+
+  &__button {
+    padding: calc(10px - 2px) calc(30px - 2px);
+    // border分を引いている。意図してcalcを使っていることを明示してあげる
+    border-color: #111;
+    background: #FFF;
+    font-weight: 700;
+    letter-spacing: 0.48px;
+
+    &:hover {
+      background-color: module.$key-color2;
+    }
+  }
+
+  &-nav__sp {
+    width: 36px;
+    height: 21px;
+    position: relative;
+    z-index: 55;
+
+    @include module.mq(pc) {
+      display: none;
+    }
+
+    &.is-checked{
+      transition: all .6s;
+
+      .header-nav__sp-bar {
+        &:nth-child(1) {
+          top: 9px;
+          transform: rotate(-30deg);
+        }
+
+        &:nth-child(2) {
+          display: none;
+        }
+
+        &:nth-child(3) {
+          top: 9px;
+          transform: rotate(30deg);
+        }
+
+      }
+    }
+
+
+
+    &-bar {
+      content: "";
+      display: block;
+      width: 100%;
+      height: 3px;
+      background-color: module.$color-base;
+      border-radius: 6px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      transition: transform .3s ease;
+
+      &:nth-child(1) {
+        top: 0;
+      }
+
+      &:nth-child(2) {
+        top: 9px;
+      }
+
+      &:nth-child(3) {
+        top: 18px;
+      }
+    }
+  }
+}

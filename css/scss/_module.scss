@@ -1,0 +1,170 @@
+$font-ja: 'Noto Sans JP', sans-serif;
+$font-en: 'Montserrat', sans-serif;
+
+$font-size-base: 16px;
+$line-height-base: 1.7;
+
+$color-base: #111;
+$background-color-base: #fafafa;
+$key-color1: #F5810E;
+$key-color2: #FABE00;
+$color-gradation: linear-gradient(180deg, #F8B819 0%, #F0D320 100%);
+
+$width-inner: 1140px;
+
+
+// breakpointsの設定
+// 幅の設定 -------------
+$breakpoints: (
+  'sp': '(max-width: 767px)',
+  'pc': '(min-width: 768px)',
+  ) !default;
+
+// mixinの登録 ------------
+@mixin mq($breakpoint: pc) {
+  @media #{map-get($breakpoints, $breakpoint)} {
+    @content;
+  }
+}
+
+// -------------------------------------
+// -------以下、共通化パーツ ----------
+// -------------------------------------
+
+body {
+  font-size: $font-size-base; //16px
+  background-color: $background-color-base;
+  line-height: $line-height-base;
+  color: $color-base;
+  font-family: $font-ja;
+  position: relative;
+
+  // この1行だけでスムーススクロールが実装されるが、
+  // 細かい機能を実装したかったらjQueryでかく
+  // scroll-behavior: smooth;
+}
+
+a {
+  cursor: pointer;
+}
+
+// inner ------------------------------------------------
+.inner {
+  padding-right: 15px;
+  padding-left: 15px;
+
+  @include mq(pc) {
+    max-width: calc($width-inner + 30px * 2
+    );
+  margin: auto;
+  padding-right: 30px;
+  padding-left: 30px;
+}
+}
+
+// ボタン ------------------------------------------------
+// aタグにつける
+.button {
+  display: inline-block;
+  font-weight: 700;
+  letter-spacing: 0.48px;
+  padding: calc(10px - 2px) calc(30px - 2px);
+  border-radius: 60px;
+  border: 2px solid currentColor;
+  background: #FFF;
+  font-size: 16px;
+  line-height: 1.7;
+  color: $color-base;
+  min-width: 150px;
+  text-align: center;
+
+  &__type2 {
+    background: $color-base;
+    color: #FFF;
+  }
+}
+
+// 見出しパーツ -------------------------------------------------
+.heading {
+  text-align: center;
+  font-family: $font-en;
+  margin-bottom: 32px;
+
+  @include mq(pc) {
+    margin-bottom: 56px;
+  }
+}
+
+.heading__en {
+  font-size: 38px;
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 3.8px;
+  margin-bottom: 14px;
+
+  @include mq(pc) {
+    font-size: 50px;
+  }
+}
+
+.heading__ja {
+  font-size: 14px;
+  font-weight: 400;
+  line-height: 1;
+  letter-spacing: 1.12px;
+
+  @include mq(pc) {
+    font-size: 16px;
+    letter-spacing: 1.28px;
+  }
+}
+
+// 改行パーツ ----------------------------------------
+
+// スマホ時のみ改行される
+.brsp {
+  @include mq(pc) {
+    display: none;
+  }
+}
+
+// PC時のみ改行される
+.brpc {
+  @include mq(sp) {
+    display: none;
+
+  }
+}
+
+// スクロールアニメーション
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: opacity 1s, transform 1s;
+
+  &.is-in-view {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.fade-in-right {
+  opacity: 0;
+  transform: translateX(50px);
+  transition: opacity 1s, transform 2s;
+
+  &.is-in-view {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+.fade-in-left {
+  opacity: 0;
+  transform: translateX(-50px);
+  transition: opacity 1s, transform 2s;
+
+  &.is-in-view {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}

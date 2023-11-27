@@ -1,0 +1,158 @@
+@use "./module";
+
+.news {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include module.mq(pc) {
+    padding-top: 50px;
+    padding-bottom: 50px;
+  }
+
+  &__card {
+    max-width: 345px;
+    margin: auto;
+    padding: 40px 12px;
+    background-color: #fff;
+    border-radius: 20px;
+    box-shadow: 0px 9px 30px 0px #F4F4F4;
+
+    @include module.mq(pc){
+      max-width: module.$width-inner; //1140px
+      border-radius: 30px;
+      padding-top: 40px;
+      padding-bottom:34px;
+      // コンテンツの中のpaddingを可変にする
+      padding-right: calc(105px / module.$width-inner * 100%);
+      padding-left: calc(105px / module.$width-inner * 100%);
+    }
+  }
+
+  &__title {
+    margin-bottom: 28px;
+    font-family: module.$font-en;
+
+    @include module.mq(pc){
+      text-align: left;
+      letter-spacing: 5px;
+      margin-bottom: 30px;
+    }
+  }
+
+  &__list {
+    margin-bottom: 22px;
+  }
+
+  &__item {
+
+    &:hover {
+      background-color: rgba($color: #FABE00, $alpha: 0.1);
+      color: inherit;
+    }
+  }
+
+  &__link {
+    display: flex;
+    flex-direction: column;
+    gap: 7px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    position: relative;
+
+    @include module.mq(pc){
+      flex-direction: row;
+      padding-top: 12px;
+      padding-bottom: 12px;
+      gap: 0;
+
+    }
+
+    &:nth-child(n + 2) {
+      &::before {
+        content: "";
+        width: 100%;
+        height: 1px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-color: #E3E3E3;
+      }
+    }
+
+    &_meta {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+
+      @include module.mq(pc){
+        width: 247px;
+        flex-shrink: 0; // これを指定しないと、flexが247を縮めてしまう可能性がある
+        gap: 14px;
+      }
+    }
+
+    &_date {
+      color: #333;
+      white-space: nowrap;
+
+      @include module.mq(pc){
+        width: 119px;
+      }
+    }
+
+    &_category {
+      min-width: 63px;
+      border-radius: 2px;
+      color: #fff;
+      font-size: 11px;
+      padding: 2px 10px;
+      text-align: center;
+
+      &.is-news {
+        background-color: #E4780C;
+      }
+
+      &.is-column {
+        background-color: #ECB815;
+      }
+
+      &.is-event {
+        background-color: #389B47;
+      }
+    }
+
+    &_title {
+      color: #111;
+      // white-space: nowrap;
+      // overflow: hidden;
+      // text-overflow: ellipsis;
+    }
+
+
+  }
+
+
+
+  &__button {
+    text-align: right;
+    // divはブロック要素なのでborder-bottomを指定したら横幅目一杯に広がってしまう。
+    // ボタンを右側、かつborder-bottomをテキスト分に指定したい場合は
+    // aタグをinline-blockに指定すればテキスト分のみの横幅になる。
+
+    a {
+      vertical-align: top;
+      cursor: pointer;
+      color: #111;
+      font-weight: 700;
+      display: inline-block;
+      padding-bottom: calc(10px - 2px); // border分を引く
+      border-bottom: 2px solid #111;
+      line-height: 1;
+
+      &:hover {
+        color: #FABE00;
+        border-color: #FABE00;
+      }
+    }
+  }
+}

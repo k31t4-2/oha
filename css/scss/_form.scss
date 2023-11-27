@@ -1,0 +1,347 @@
+@use "./module";
+
+.contact {
+  background: url(/img/movie-bg.png) repeat top center / 529px auto;
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include module.mq(pc) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  &__inner {}
+
+  &__box {
+    border-radius: 30px;
+    background: #FFF;
+    padding: 60px 20px;
+
+    @include module.mq(pc) {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 30px;
+
+    @include module.mq(pc) {
+      margin-bottom: 50px;
+    }
+  }
+
+  // form ------------------------
+  &__form {
+
+    @include module.mq(pc) {
+      max-width: 612px;
+      margin: auto;
+    }
+  }
+
+  &__items {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    margin-bottom: 30px;
+  }
+
+  &__item {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+
+    @include module.mq(pc) {
+      flex-direction: row;
+      gap: 32px;
+    }
+
+    // label --------------------------
+    &-title {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+
+      @include module.mq(pc) {
+        min-width: 180px;
+        justify-content: flex-end;
+      }
+    }
+
+    &-label {
+      font-weight: 700;
+    }
+
+    &-tag {
+      display: inline-block;
+      border-radius: 2px;
+      background: #EE8013;
+      padding: 6px 9px 5px;
+      color: #FFF;
+      font-size: 11px;
+      font-weight: 700;
+      line-height: 1;
+      letter-spacing: 1.98px;
+
+      &.required {
+        background: #EE8013;
+      }
+
+      &.optional {
+        background: #43B549;
+      }
+    }
+
+    // input ----------------------
+    // [type="text"],[type="email"]
+
+    &-input {
+      flex-grow: 1;
+
+      .input-text {
+        width: 100%;
+        border-radius: 5px;
+        border: 3px solid #111;
+        padding-top: calc(15px - 3px);
+        padding-bottom: calc(14px - 3px);
+        padding-left: calc(16px - 3px);
+
+        &:hover,
+        &:focus {
+          border-color: module.$key-color1;
+          outline: none;
+        }
+      }
+    }
+
+    // radio --------------------------
+    &-radios {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+
+      @include module.mq(pc) {
+        flex-direction: row;
+        gap: 30px;
+      }
+    }
+
+    &-radio {
+
+      // 既存のラジオは消えたので、テキストの擬似要素で作る
+      [type="radio"] {
+        width: 1px;
+        height: 1px;
+        position: absolute;
+        clip: rect(0, 0, 0, 0);
+        overflow: hidden;
+
+        &:checked {
+          +.contact__item-radio-text {
+            &::after {
+              opacity: 1;
+            }
+          }
+        }
+
+        &:focus {
+          +.contact__item-radio-text {
+            &::after {
+              border-color: #F5810E;
+            }
+          }
+        }
+      }
+
+      &-text {
+        font-weight: 700;
+        position: relative;
+        padding-left: 28px;
+
+        &:hover {
+          &::before {
+            border-color: module.$key-color1;
+          }
+        }
+
+        &::before,
+        &::after {
+          content: "";
+          position: absolute;
+          top: 50%;
+          transform: translateY(-50%);
+        }
+
+        &::before {
+          left: 0;
+          width: 24px;
+          height: 24px;
+          border-radius: 24px;
+          border: 3px solid #111;
+        }
+
+        &::after {
+          left: 7px;
+          width: 10px;
+          height: 10px;
+          border-radius: 10px;
+          background: #F5810E;
+          opacity: 0;
+        }
+      }
+    }
+
+
+    // select ------------------------------
+    &-select {
+      flex-grow: 1;
+
+
+
+      select {
+        // ブラウザ表示のアイコンを削除
+        appearance: none;
+        width: 100%;
+        border-radius: 5px;
+        border: 3px solid #111;
+        background: #FFF;
+        padding-top: calc(15px - 3px);
+        padding-bottom: calc(14px - 3px);
+        padding-left: calc(16px - 3px);
+        padding-right: 46px;
+        font-weight: 700;
+        // selectは擬似要素を使えないので
+        // 背景として指定する
+        background: url(../../img/under-arrow.png) no-repeat center right 16px / 10px 7px;
+
+        &:hover,
+        &:focus {
+          border-color: module.$key-color1;
+          outline: none;
+        }
+      }
+    }
+
+    // textarea ----------------------------
+    &-text {
+      flex-grow: 1;
+
+      textarea {
+        border-radius: 5px;
+        border: 3px solid #111;
+        background: #FFF;
+        width: 100%;
+        height: 180px;
+        padding: 16px;
+
+        &:hover,
+        &:focus {
+          border-color: module.$key-color1;
+          outline: none;
+        }
+      }
+    }
+  }
+
+  // privacy ----------------------------
+  &__privacy {
+    margin-bottom: 30px;
+    text-align: center;
+
+    @include module.mq(pc) {
+      margin-bottom: 38px;
+    }
+
+    &-checkbox {}
+
+    &-input {
+      width: 1px;
+      height: 1px;
+      position: absolute;
+      clip: rect(0, 0, 0, 0);
+      overflow: hidden;
+
+      &:checked {
+        +.contact__privacy-text {
+          &::after {
+            opacity: 1;
+          }
+        }
+      }
+
+      &:focus {
+        +.contact__privacy-text {
+          &::before{
+            border-color: module.$key-color1;
+          }
+        }
+      }
+    }
+
+    &-text {
+      font-size: 14px;
+      line-height: 1.7;
+      padding-left: 30px;
+      position: relative;
+      font-weight: 700;
+
+      &:hover {
+        &::before{
+          border-color: module.$key-color1;
+        }
+      }
+
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        left: 0;
+      }
+
+      &::before {
+        width: 20px;
+        height: 20px;
+        border-radius: 1px;
+        border: 1px solid #111;
+      }
+
+      &::after {
+        background: url(../../img/checkbox.png) no-repeat center center / contain;
+        height: 18px;
+        width: 23px;
+        left: -1px;
+        margin-top: -1.2px;
+        opacity: 0;
+      }
+
+      a {
+        font-weight: inherit;
+        cursor: pointer;
+        text-decoration: underline;
+
+        &:hover {
+          color: module.$key-color1;
+        }
+      }
+    }
+
+  }
+
+
+  // submit --------------------------------
+  &__submit {
+    text-align: center;
+
+    input {
+      &:hover {
+        background-color: module.$key-color1;
+      }
+    }
+  }
+
+
+
+}

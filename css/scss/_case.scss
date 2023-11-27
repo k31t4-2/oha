@@ -1,0 +1,63 @@
+@use "./module";
+
+.case {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include module.mq(pc){
+    padding-top: 70px;
+    padding-bottom: 50px;
+  }
+
+  &__inner {
+    max-width: calc(295px + 40px * 2);
+    padding-left: 40px;
+    padding-right: 40px;
+    margin: auto;
+
+    @include module.mq(pc){
+      max-width: calc(920px + 30px * 2);
+      margin: auto;
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+  &__title {
+    text-align: center;
+    font-size: 18px;
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 1.8px;
+    margin-bottom: 30px;
+
+    @include module.mq(pc){
+      margin-bottom: 54px;
+      font-size: 20px;
+      letter-spacing: 2px;
+    }
+  }
+
+  &__items {
+    display: grid;
+    grid-template-columns: repeat(2,1fr);
+    gap: 22px 15px;
+
+    @include module.mq(pc){
+      grid-template-columns: repeat(4,1fr);
+      gap: 26px 40px;
+    }
+  }
+
+  &__item {
+    text-align: center;
+
+    img {
+      width: 140px;
+
+      @include module.mq(pc){
+        width: 200px;
+      }
+    }
+  }
+
+}

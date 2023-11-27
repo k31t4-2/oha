@@ -1,0 +1,128 @@
+@use "./module";
+
+.gallery {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include module.mq(pc) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  &__inner {
+    @include module.mq(pc){
+      max-width: calc(800px + 30px * 2);
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  &__title {
+    margin-bottom: 30px;
+
+    @include module.mq(pc) {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__slide {}
+
+  &__swiper {
+    padding-bottom: 26px;
+    padding-right: 5px;
+    padding-left: 5px;
+
+    @include module.mq(pc) {
+      padding-right: 70px;
+      padding-left: 70px;
+    }
+  }
+
+  &__slide {}
+
+  &__card {
+    border-radius: 20px;
+    border: 3px solid #111;
+    background: #FFF;
+    box-shadow: 0px 9px 30px 0px #F4F4F4;
+    padding: 15px 15px 12px 15px;
+
+    @include module.mq(pc){
+      border-radius: 30px;
+      padding: 20px 20px 18px 20px;
+    }
+  }
+
+  &__image {
+    margin-bottom: 11px;
+    text-align: center;
+
+    img {
+      border-radius: 10px;
+
+      @include module.mq(pc){
+        border-radius: 20px;
+      }
+    }
+  }
+
+  &__text {
+    text-align: center;
+    font-size: 14px;
+
+    @include module.mq(pc){
+      font-size: 16px;
+    }
+  }
+
+  &__pagination {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    bottom: 0 !important;
+
+    .swiper-pagination-bullet {
+      width: 10px;
+      height: 10px;
+      border-radius: 10px;
+      background: #BCBCBC;
+      opacity: 1;
+      margin: 0 !important;
+
+
+      &-active {
+        background: #FABE00;
+      }
+    }
+  }
+
+
+
+  &__prev,
+  &__next {
+    width: 40px;
+    height: 40px;
+    top: 50%;
+    transform: translateY(-50%);
+
+    @include module.mq(pc) {
+      width: 50px;
+      height: 50px;
+    }
+
+
+    &::after {
+      display: none;
+    }
+  }
+
+  &__prev {
+    background: url(../../img/gallery/prev-icon.png) no-repeat center center / contain;
+    left: 0;
+  }
+
+  &__next {
+    background: url(../../img/gallery/next-icon.png) no-repeat center center / contain;
+    right: 0;
+  }
+}

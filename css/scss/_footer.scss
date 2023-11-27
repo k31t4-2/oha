@@ -1,0 +1,46 @@
+@use "module";
+
+.to-top {
+  position: fixed;
+  right: 10px;
+  bottom: 10px;
+  cursor: pointer;
+  opacity: 0;
+  visibility: hidden;
+  transition: all .3s;
+
+  &.is-show {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  img {
+    width: 50px;
+    height: 61px;
+
+    @include module.mq(pc) {
+      width: 76px;
+      height: 93px;
+    }
+  }
+}
+
+
+// ----------------------------------
+// footer ---------------------------
+// ----------------------------------
+
+.footer {
+  padding-top: 18px;
+  padding-bottom: 18px;
+  text-align: center;
+  background: #111;
+
+  .copyright {
+    color: #F5F5F5;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1;
+    letter-spacing: 0.96px;
+  }
+}

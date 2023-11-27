@@ -1,0 +1,239 @@
+@use "./module";
+
+.how-to-use {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: #fff;
+
+  @include module.mq(pc) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  &__inner {
+
+    @include module.mq(pc) {
+      padding-right: calc(15px / module.$width-inner * 100%);
+      padding-left: calc(15px / module.$width-inner * 100%);
+    }
+  }
+
+  // how-to-use タイトル
+  &__title {
+    margin-bottom: 104px;
+
+    @include module.mq(pc) {
+      margin-bottom: 89px;
+    }
+  }
+
+  &__box {
+    max-width: 345px;
+    margin: auto;
+    text-align: center;
+    border-radius: 30px;
+    background: #FFFBF0;
+    padding: 54px 30px 48px;
+
+    &:not(:last-child) {
+      margin-bottom: 112px;
+    }
+
+
+    @include module.mq(pc) {
+      max-width: module.$width-inner;
+      padding: 44px 8px 56px;
+
+      &:not(:last-child) {
+        margin-bottom: 75px;
+      }
+
+      &:nth-child(odd) {
+        .how-to-use__box-title {
+          img {
+            order: 2;
+          }
+        }
+
+      }
+    }
+
+    &-title {
+      text-align: center;
+      margin-bottom: 16px;
+      position: relative;
+      margin-bottom: 20px;
+
+
+      @include module.mq(pc) {
+        padding-right: 95px;
+        margin: auto;
+        width: fit-content;
+        margin-bottom: 40px;
+      }
+
+      img {
+        width: 85px;
+        height: 110px;
+        position: absolute;
+        // 本体の100%分 + 余白を16pxとる
+        right: 50%;
+        transform: translateX(50%);
+        bottom: calc(100% + 16px);
+
+        @include module.mq(pc) {
+          bottom: 0;
+          right: 0;
+          transform: translateX(0);
+        }
+      }
+
+      .is-type2 & {
+
+        @include module.mq(pc) {
+          padding-left: 95px;
+          padding-right: 0;
+
+          img {
+            left: 0;
+          }
+        }
+      }
+
+
+      p {
+        font-size: 18px;
+        font-weight: 700;
+        line-height: 1.7;
+        letter-spacing: 1.8px;
+
+        @include module.mq(pc) {
+          font-size: 22px;
+          letter-spacing: 2.2px;
+        }
+      }
+    }
+  }
+
+
+
+  &__steps {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+
+    @include module.mq(pc) {
+      flex-direction: row;
+      gap: 24px;
+      max-width: 948px;
+      margin: auto;
+    }
+  }
+
+  &__step {
+    // max-width: 265px;
+    // width: 100%;
+    // height: auto;
+
+    text-align: center;
+
+
+    @include module.mq(pc) {
+      flex: 1;
+    }
+  }
+}
+
+// ---------------------------------------
+// ここからstep-box
+// ---------------------------------------
+
+.step-box {
+  position: relative;
+  padding-top: 45px;
+
+
+
+  &__head {
+    position: absolute;
+    top: 0px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 90px;
+    height: 90px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 3px;
+
+    border-radius: 45px;
+    border: 3px solid #111;
+    background: #F5810E;
+    font-family: module.$font-en;
+    line-height: 1;
+
+    @include module.mq(pc) {
+      // top: -44px;
+    }
+
+    .is-type2 & {
+      background-color: #FABE00;
+    }
+
+
+    &-text {
+      color: #111;
+      font-size: 13px;
+      letter-spacing: 1.3px;
+      font-weight: 700;
+    }
+
+    &-number {
+      color: #FFF;
+      font-size: 34px;
+      letter-spacing: 3.4px;
+      color: #FFF;
+      font-weight: 700;
+    }
+
+  }
+
+  &__body {
+    border-radius: 30px;
+    border: 3px solid #111;
+    background: #FFF;
+
+    padding-top: 50px;
+    padding-bottom: 26px;
+
+    @include module.mq(pc) {
+      padding-top: 50px;
+      padding-bottom: 26px;
+    }
+
+    &-image {
+      margin-bottom: 10px;
+
+      img {
+        max-width: 160px;
+        width: 100%;
+        height: auto;
+
+        @include module.mq(pc) {
+          max-width: 200px;
+        }
+      }
+    }
+
+    &-text {
+      text-align: center;
+      font-weight: 700;
+      line-height: 1.7;
+      letter-spacing: 0.48px;
+      white-space: nowrap;
+    }
+
+  }
+}

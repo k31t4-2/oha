@@ -1,0 +1,146 @@
+@use "./module";
+
+.merit {
+  padding-top: 60px;
+  padding-bottom: 60px;
+
+  @include module.mq(pc) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+  &__inner {}
+
+  &__title {
+    margin-bottom: 30px;
+
+    @include module.mq(pc) {
+      margin-bottom: 60px;
+    }
+  }
+
+  &__boxes {
+
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+
+    @include module.mq(pc) {
+      margin: auto;
+      gap: 40px;
+
+    }
+  }
+
+  &-box {
+
+    background-color: #fff;
+    padding: 10px 20px 24px;
+    border-radius: 20px;
+
+    @include module.mq(pc){
+      padding-right: 18px;
+      padding-left: 18px;
+    }
+
+
+    &__content {
+
+      @include module.mq(pc) {
+          display: flex;
+          align-items: center;
+          flex-direction: row-reverse;
+          gap: 50px;
+          max-width: 920px;
+          margin: auto;
+        }
+
+        .is-reverse & {
+          @include module.mq(pc){
+            flex-direction: row;
+          }
+        }
+    }
+
+    &__image {
+      text-align: center;
+      margin-bottom: 18px;
+
+      @include module.mq(pc) {
+        margin-bottom: 0;
+        width: calc(350px / 920px * 100%);
+      }
+
+      img {
+        width: 200px;
+
+        @include module.mq(pc) {
+          width: 350px;
+        }
+      }
+    }
+
+    &__body {
+      border: none;
+      padding: 0;
+      @include module.mq(pc){
+        width: calc(520px / 920px * 100%);
+      }
+
+      &-title {
+        display: flex;
+        align-items: center;
+        gap: 14px;
+        margin-bottom: 10px;
+
+        @include module.mq(pc) {
+          gap: 27px;
+        }
+
+        .text {
+          font-family: module.$font-en;
+          font-weight: 700;
+          letter-spacing: 1.6px;
+
+          @include module.mq(pc) {
+            font-size: 20px;
+            font-weight: 700;
+            letter-spacing: 2px;
+          }
+        }
+
+        .number {
+          color: module.$key-color2;
+          font-family: module.$font-en;
+          font-size: 70px;
+          font-weight: 600;
+          line-height: 1;
+
+          @include module.mq(pc) {
+            font-size: 110px;
+          }
+        }
+      }
+
+      &-text {
+        text-align: left;
+        font-size: 14px;
+        font-weight: 400;
+        line-height: 2;
+
+        @include module.mq(pc) {
+          font-size: 15px;
+        }
+      }
+    }
+
+  }
+
+  // ---------------------------------
+  // ここからstep-box
+  // ---------------------------------
+
+
+
+
+}

@@ -1,0 +1,140 @@
+@use "./module";
+
+.about {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  // 背景の円が飛び出しているので、横スクロールしない設定
+  overflow: hidden;
+
+  @include module.mq(pc) {
+    padding-top: 47px;
+    padding-bottom: 100px;
+  }
+
+
+  &__inner {
+    padding-right: 28px;
+    padding-left: 28px;
+
+    // background-color: module.$color-gradation;
+    @include module.mq(pc) {
+      padding-right: 30px;
+      padding-left: 30px;
+    }
+  }
+
+  &__logo {
+    text-align: center;
+    margin-bottom: 150px;
+
+    @include module.mq(pc) {
+      margin-bottom: 176px;
+    }
+
+    img {
+      width: 180px;
+
+      @include module.mq(pc) {
+        width: 230px;
+      }
+    }
+  }
+
+  &__content {
+    position: relative;
+    padding-top: 288px;
+    padding-bottom: 105px;
+    text-align: center;
+
+    @include module.mq(pc) {
+      padding-top: 284px;
+      padding-bottom: 100px;
+    }
+
+    &::before {
+      content: "";
+      width: 1100px;
+      height: 1100px;
+      border-radius: 50%;
+      background: module.$color-gradation;
+      position: absolute;
+      top: 0;
+      // 以下の2行で中央寄せになる
+      left: 50%;
+      transform: translateX(-50%);
+      z-index: -1;
+
+      @include module.mq(pc) {
+        width: 800px;
+        height: 800px;
+      }
+
+    }
+  }
+
+  &__image {
+    position: absolute;
+    top: -110px;
+    left: 0;
+    width: 100%;
+
+    @include module.mq(pc) {
+      top: -126px;
+    }
+
+    img {
+      width: 320px;
+
+      @include module.mq(pc) {
+        width: 330px;
+      }
+    }
+  }
+
+  &__text {
+    font-weight: 700;
+    line-height: 2.3;
+    margin-bottom: 42px;
+
+    @include module.mq(pc) {
+      margin-bottom: 42px;
+    }
+
+  }
+
+  &__pop {
+    font-weight: 700;
+    line-height: 1;
+    letter-spacing: 1.28px;
+    margin-bottom: 12px;
+
+    @include module.mq(pc) {
+      margin-bottom: 15px;
+    }
+  }
+
+  &__button {
+
+    a {
+      background: #FFF;
+      color: #111;
+      font-weight: 700;
+      letter-spacing: 0.48px;
+      border-color: #111;
+      padding: calc(10px - 2px) calc(30px - 2px);
+
+      transition: all .2s;
+
+      &:hover {
+        background-color: module.$key-color1;
+      }
+    }
+
+  }
+
+  &__modal {
+    font-size: 14px;
+    font-weight: 400;
+  }
+
+}

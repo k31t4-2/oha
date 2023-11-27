@@ -1,0 +1,140 @@
+@use "./module";
+
+.compare {
+  padding-top: 60px;
+  padding-bottom: 60px;
+  background-color: #fff;
+
+  @include module.mq(pc) {
+    padding-top: 100px;
+    padding-bottom: 100px;
+  }
+
+
+  &__title {
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 1;
+    text-align: center;
+    margin-bottom: 40px;
+
+    @include module.mq(pc) {
+      font-size: 24px;
+      margin-bottom: 60px;
+    }
+  }
+
+  &__content {
+    overflow-x: auto;
+  }
+
+  &__table {
+    table-layout: fixed; //子要素を均等の幅にする
+    border-collapse: collapse;
+    width: 620px; //はみ出すので親にoverflowを指定する
+    margin: auto;
+
+    @include module.mq(pc) {
+      width: 1000px;
+    }
+
+    th,
+    td {
+      text-align: center;
+      height: 60PX;
+      vertical-align: middle;
+      font-weight: 700;
+      line-height: 1.7;
+      letter-spacing: 0.48px;
+
+      @include module.mq(pc) {
+        height: 100PX;
+      }
+
+      &:nth-child(1) {
+        width: 130px;
+
+        @include module.mq(pc) {
+          width: 250px;
+          font-size: 20px;
+        }
+      }
+
+      &:nth-child(2) {
+        width: 90px;
+        background: #FFF9E5;
+        font-size: 16px;
+        letter-spacing: 0.48px;
+
+        @include module.mq(pc) {
+          width: 250px;
+          font-size: 25px;
+          letter-spacing: 0.75px;
+        }
+      }
+
+    }
+
+    thead {
+      th {
+        letter-spacing: 1.6px;
+
+        @include module.mq(pc) {
+          letter-spacing: 2px;
+        }
+
+        img {
+          width: 70px;
+
+          @include module.mq(pc) {
+            width: 123px;
+          }
+        }
+      }
+    }
+
+    tbody {
+      tr {
+        border-top: 1.5px solid #000;
+      }
+
+      th {
+        font-size: 16px;
+        letter-spacing: 0.48px;
+
+        @include module.mq(pc){
+          letter-spacing: 0.6px;
+          font-size: 20px;
+        }
+      }
+
+      td {
+        font-size: 14px;
+        letter-spacing: 0.42px;
+
+        @include module.mq(pc) {
+          font-size: 16px;
+          letter-spacing: 0.48px;
+        }
+      }
+    }
+
+
+
+
+  }
+
+  &__attention {
+    color: #686868;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1;
+    margin-top: 11px;
+    text-align: center;
+
+    @include module.mq(pc) {
+      display: none;
+    }
+  }
+
+}
