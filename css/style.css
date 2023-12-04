@@ -1618,8 +1618,8 @@ a {
 }
 @media (min-width: 768px) {
   .gallery__swiper {
-    padding-right: 64px;
-    padding-left: 64px;
+    padding-right: 60px;
+    padding-left: 60px;
   }
 }
 .gallery__card {
@@ -1697,11 +1697,11 @@ a {
   display: none;
 }
 .gallery__prev {
-  background: url(../../img/gallery/prev-icon.png) no-repeat center center/contain;
+  background: url(../img/gallery/prev-icon.png) no-repeat center center/contain;
   left: 0;
 }
 .gallery__next {
-  background: url(../../img/gallery/next-icon.png) no-repeat center center/contain;
+  background: url(../img/gallery/next-icon.png) no-repeat center center/contain;
   right: 0;
 }
 

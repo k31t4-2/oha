@@ -33,8 +33,8 @@
     padding-left: 5px;
 
     @include module.mq(pc) {
-      padding-right: 64px;
-      padding-left: 64px;
+      padding-right: 60px;
+      padding-left: 60px;
     }
   }
 
@@ -117,12 +117,12 @@
   }
 
   &__prev {
-    background: url(../../img/gallery/prev-icon.png) no-repeat center center / contain;
+    background: url(../img/gallery/prev-icon.png) no-repeat center center / contain;
     left: 0;
   }
 
   &__next {
-    background: url(../../img/gallery/next-icon.png) no-repeat center center / contain;
+    background: url(../img/gallery/next-icon.png) no-repeat center center / contain;
     right: 0;
   }
 }
