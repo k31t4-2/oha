@@ -68,6 +68,11 @@ const swiper = new Swiper('#js-gallery-swiper', {
   // ループオプション
   loop: true,
 
+  autoplay: {
+    delay: 3000,
+    disableOnInteraction: true,  //ユーザーが操作した後はautoplayを止める
+  },
+
   // If we need pagination
   pagination: {
     el: '#js-gallery-pagination',
